@@ -1,0 +1,71 @@
+{
+  "name": "strapi-plugin-reading-time",
+  "version": "0.0.1",
+  "description": "Calculate the reading time of your content",
+  "strapi": {
+    "displayName": "Reading Time",
+    "name": "reading-time",
+    "description": "Calculate the reading time of your content",
+    "kind": "plugin"
+  },
+  "files": [
+    "server",
+    "LICENSE",
+    "README.md",
+    "strapi-server.js"
+  ],
+  "keywords": [
+    "strapi",
+    "strapi-plugin",
+    "plugin",
+    "strapi plugin",
+    "reading-time",
+    "reading time"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "@Paidly",
+    "url": "https://github.com/Paidly"
+  },
+  "scripts": {
+    "lint": "eslint --max-warnings=0 './**/*.{js,jsx}'",
+    "lint:fix": "eslint --fix './**/*.{js,jsx}'",
+    "format": "prettier --check '**/*.{js,ts}'",
+    "format:fix": "prettier --write **/*.{ts,js,json,yml}"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.1.0",
+    "@strapi/utils": "^4.1.0",
+    "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "reading-time": "^1.5.0"
+  },
+  "devDependencies": {
+    "@strapi-community/eslint-config": "^0.4.3",
+    "@strapi/strapi": "^4.1.0",
+    "@strapi/utils": "^4.1.0",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "lodash": "^4.17.21",
+    "prettier": "^2.5.1"
+  },
+  "maintainers": [
+    {
+      "name": "@Paidly",
+      "url": "https://meetpaidly.com"
+    }
+  ],
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Paidly/strapi-plugin-reading-time"
+  },
+  "bugs": {
+    "url": "https://github.com/Paidly/strapi-plugin-reading-time/issues"
+  }
+}
