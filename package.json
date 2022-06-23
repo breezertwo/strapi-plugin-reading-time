@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-reading-time",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Calculate the reading time of your content",
   "strapi": {
     "displayName": "Reading Time",
