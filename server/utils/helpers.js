@@ -1,7 +1,7 @@
 'use strict';
 const _ = require('lodash');
 
-const { ForbiddenError } = require('@strapi/utils/lib/errors');
+const { ForbiddenError } = require('@strapi/utils');
 
 const { pluginId } = require('./pluginId');
 
