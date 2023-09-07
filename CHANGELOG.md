@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Paidly/strapi-plugin-reading-time/compare/v1.1.0...v1.2.0) (2023-09-07)
+
+
+### Features
+
+* **strapi:** Update our base strapi version to ^4.7.0 ([ea0bc24](https://github.com/Paidly/strapi-plugin-reading-time/commit/ea0bc245d63037fbcd4284d3bc1d9fcdd29de2ae))
+
 # [1.1.0](https://github.com/Paidly/strapi-plugin-reading-time/compare/v1.0.0...v1.1.0) (2023-09-07)
 
 
