@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-reading-time",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Calculate the reading time of your content",
   "strapi": {
     "displayName": "Reading Time",
@@ -35,23 +35,22 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^4.13.7",
-    "@strapi/utils": "^4.13.7",
+    "@strapi/strapi": "^5.4.1",
+    "@strapi/utils": "^5.4.1",
     "lodash": "^4.17.21"
   },
   "dependencies": {
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@strapi-community/eslint-config": "^0.4.3",
-    "@strapi/strapi": "^4.13.7",
-    "@strapi/utils": "^4.13.7",
-    "eslint": "^8.50.0",
-    "eslint-config-prettier": "^9.0.0",
+    "@strapi/strapi": "^5.4.1",
+    "@strapi/utils": "^5.4.1",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-node": "^11.1.0",
     "jest": "^29.7.0",
     "lodash": "^4.17.21",
-    "prettier": "^3.0.3"
+    "prettier": "^3.3.3"
   },
   "maintainers": [
     {
@@ -65,9 +64,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Paidly/strapi-plugin-reading-time"
+    "url": "https://github.com/alkk/strapi-plugin-reading-time"
   },
   "bugs": {
-    "url": "https://github.com/Paidly/strapi-plugin-reading-time/issues"
-  }
+    "url": "https://github.com/alkk/strapi-plugin-reading-time/issues"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
