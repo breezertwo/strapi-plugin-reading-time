@@ -1,3 +1,5 @@
+[![Test](https://github.com/breezertwo/strapi-plugin-reading-time/actions/workflows/test.yaml/badge.svg)](https://github.com/breezertwo/strapi-plugin-reading-time/actions/workflows/test.yaml)
+
 # Strapi Plugin Reading Time
 
 A plugin for [Strapi](https://github.com/strapi/strapi) that provides the ability to calculate the reading time texed based content.
@@ -18,13 +20,14 @@ Add the following config to `./config/plugins.js`.
 ```javascript
 module.exports = ({ env }) => ({
   // ...
-  'reading-time': {
+  "reading-time": {
     enabled: true,
     config: {
+      skipUndefinedReferences: true,
       contentTypes: {
         article: {
-          field: 'reading_time',
-          references: 'content',
+          field: "reading_time",
+          references: "content",
         },
       },
     },
@@ -34,3 +37,9 @@ module.exports = ({ env }) => ({
 ```
 
 This will listen for any record created or updated in the `article` content type and set the display time to read value for the `reading_time` field automatically based on the `content` field.
+
+`skipUndefinedReferences`
+
+### Links
+
+- Original plugin author: [Paidly](https://github.com/Paidly/strapi-plugin-reading-time)

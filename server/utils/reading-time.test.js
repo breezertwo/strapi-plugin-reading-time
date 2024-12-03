@@ -1,9 +1,29 @@
+const { getPlainText } = require('./get-plain-text-from-node');
 const { calculateReadingTime } = require('./reading-time');
 
 describe('calculateReadingTime', () => {
   test('should return an object with the expected properties', () => {
     const input = 'This is a test article.';
     const result = calculateReadingTime(input);
+    expect(result).toHaveProperty('text');
+    expect(result).toHaveProperty('time');
+    expect(result).toHaveProperty('words');
+    expect(result).toHaveProperty('minutes');
+  });
+
+  test('should return an object with the expected properties for block rich text', () => {
+    const input = [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'This is a test article.',
+            type: 'text',
+          },
+        ],
+      },
+    ];
+    const result = calculateReadingTime(getPlainText(input));
     expect(result).toHaveProperty('text');
     expect(result).toHaveProperty('time');
     expect(result).toHaveProperty('words');

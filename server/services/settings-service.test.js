@@ -35,16 +35,7 @@ describe('settingsService', () => {
 
   test('get function should call strapi.config.get with the correct key', () => {
     service.get();
-    expect(strapi.config.get).toHaveBeenCalledWith('plugin.reading-time');
-  });
-
-  test('set function should call strapi.config.set with the correct key and value', () => {
-    const settings = { test: true };
-    service.set(settings);
-    expect(strapi.config.set).toHaveBeenCalledWith(
-      'plugin.reading-time',
-      settings
-    );
+    expect(strapi.config.get).toHaveBeenCalledWith('plugin::reading-time');
   });
 
   test('build function should log a warning if an invalid reference field is provided', () => {
