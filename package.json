@@ -32,7 +32,8 @@
     "lint:fix": "eslint --fix './**/*.{js,jsx}'",
     "format": "prettier --check '**/*.{js,ts}'",
     "format:fix": "prettier --write **/*.{ts,js,json,yml}",
-    "test": "jest"
+    "test": "jest",
+    "yalc:update": "yalc push --scripts --update --replace"
   },
   "peerDependencies": {
     "@strapi/strapi": "^5.4.2",

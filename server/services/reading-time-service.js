@@ -3,6 +3,7 @@ const {
   calculateReadingTime,
   getPluginService,
 } = require('../utils');
+const { getPlainText } = require('../utils/get-plain-text-from-node');
 
 module.exports = ({ strapi }) => ({
   storeCalculation(ctx) {
@@ -22,7 +23,15 @@ module.exports = ({ strapi }) => ({
     // ensure the reference field has data
     let referenceFieldValues = references
       .filter((r) => typeof data[r] !== 'undefined' && data[r].length)
-      .map((r) => data[r]);
+      .map((r) => {
+        const content = data[r];
+
+        if (typeof content === 'string') {
+          return content;
+        }
+
+        return getPlainText(content);
+      });
 
     const hasUndefinedFields = referenceFieldValues.length < references.length;
     if (
@@ -32,8 +41,8 @@ module.exports = ({ strapi }) => ({
       return;
     }
 
-    referenceFieldValues = referenceFieldValues.join(' ');
-    const time = calculateReadingTime(referenceFieldValues);
-    data[field] = time.text;
+    const time = calculateReadingTime(referenceFieldValues.join(' '));
+
+    data[field] = time.minutes;
   },
 });
