@@ -1,24 +1,21 @@
-'use strict';
+import { Core } from '@strapi/strapi';
+import _ from 'lodash';
+import { isValidModelField } from '../utils';
+import { PLUGIN_ID } from '../utils/pluginId';
 
-const _ = require('lodash');
-
-const { isValidModelField, pluginId } = require('../utils');
-
-module.exports = ({ strapi }) => ({
+const settingsService = ({ strapi }: { strapi: Core.Strapi }) => ({
   get() {
-    return strapi.config.get(`plugin::${pluginId}`);
+    return strapi.config.get(`plugin::${PLUGIN_ID}`);
   },
-  set(settings) {
-    return strapi.config.set(`plugin::{pluginId}`, settings);
+  set(settings: any) {
+    return strapi.config.set(`plugin::${PLUGIN_ID}`, settings);
   },
-  build(settings) {
+  build(settings: any) {
     // build models
     settings.models = {};
 
     if (!settings.contentTypes) {
-      strapi.log.warn(
-        '[reading-time] skipping registration, invalid configuration.'
-      );
+      strapi.log.warn('[reading-time] skipping registration, invalid configuration.');
       return settings;
     }
 
@@ -37,12 +34,8 @@ module.exports = ({ strapi }) => ({
         return;
       }
 
-      let references = _.isArray(model.references)
-        ? model.references
-        : [model.references];
-      const hasReferences = references.every((r) =>
-        isValidModelField(contentType, r)
-      );
+      let references = _.isArray(model.references) ? model.references : [model.references];
+      const hasReferences = references.every((r) => isValidModelField(contentType, r));
       if (!hasReferences) {
         strapi.log.warn(
           `[reading-time] skipping ${contentType.info.singularName} registration, invalid reference field provided.`
@@ -65,3 +58,5 @@ module.exports = ({ strapi }) => ({
     return settings;
   },
 });
+
+export default settingsService;

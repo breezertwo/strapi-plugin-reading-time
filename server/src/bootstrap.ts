@@ -1,9 +1,8 @@
-'use strict';
+import _ from 'lodash';
+import { getPluginService, SUPPORTED_LIFECYCLES } from './utils';
+import { Core } from '@strapi/strapi';
 
-const _ = require('lodash');
-const { SUPPORTED_LIFECYCLES, getPluginService } = require('./utils');
-
-module.exports = ({ strapi }) => {
+const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
   const settingsService = getPluginService(strapi, 'settingsService');
   const settings = settingsService.get();
 
@@ -19,10 +18,12 @@ module.exports = ({ strapi }) => {
   };
 
   SUPPORTED_LIFECYCLES.forEach((lifecycle) => {
-    subscribe[lifecycle] = (ctx) => {
+    subscribe[lifecycle] = (ctx: any) => {
       getPluginService(strapi, 'readingTimeService').storeCalculation(ctx);
     };
   });
 
   strapi.db.lifecycles.subscribe(subscribe);
 };
+
+export default bootstrap;

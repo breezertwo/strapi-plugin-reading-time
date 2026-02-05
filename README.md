@@ -1,13 +1,19 @@
-[![Test](https://github.com/breezertwo/strapi-plugin-reading-time/actions/workflows/test.yaml/badge.svg)](https://github.com/breezertwo/strapi-plugin-reading-time/actions/workflows/test.yaml)
-
 # Strapi Plugin Reading Time
 
-A plugin for [Strapi](https://github.com/strapi/strapi) that provides the ability to calculate the reading time of
-texed based fields.
+A plugin for [Strapi](https://github.com/strapi/strapi) that provides the ability to automatically calculate the reading time of text based fields.
+Supports extracting text from nearly all field types. (e.g Text, Rich text (Blocks), Markdown, Lists, Image captions, ...)
 
-Supported field types:
-- Text
-- Rich text (Blocks)
+<center>
+  <a href="https://www.npmjs.com/package/@breezertwo/strapi-plugin-reading-time">
+    <img src="https://img.shields.io/npm/v/%40breezertwo%2Fstrapi-plugin-reading-time?style=flat-square&color=blue" alt="NPM Version" />
+  </a>
+  <a href="https://github.com/strapi/strapi">
+    <img src="https://img.shields.io/badge/strapi-v5.0.0+-green?style=flat-square" alt="Strapi Version" />
+  </a>
+  <a href="https://github.com/breezertwo/strapi-plugin-reading-time/actions/workflows/test.yaml">
+    <img src="https://github.com/breezertwo/strapi-plugin-reading-time/actions/workflows/test.yaml/badge.svg" alt="Test" />
+  </a>
+</center>
 
 ## Installation
 
@@ -17,19 +23,19 @@ npm i @breezertwo/strapi-plugin-reading-time
 
 ## Configuration
 
-Add the following config to `./config/plugins.js`.
+Add the following config to `./config/plugins.ts`.
 
 ```javascript
 module.exports = ({ env }) => ({
   // ...
-  "reading-time": {
+  'reading-time': {
     enabled: true,
     config: {
       skipUndefinedReferences: true,
       contentTypes: {
-        article: {
-          field: "reading_time",
-          references: "content",
+        article: {                                // API ID of your collection-type
+          field: 'reading_time',                  // the field name for the reading time value in your schema
+          references: ['content', 'description'], // the names of the fields to extract text from
         },
         // ...
       },
@@ -39,14 +45,22 @@ module.exports = ({ env }) => ({
 });
 ```
 
-This will listen for any record created or updated in the `article` collection type and set the display time to read value for the `reading_time` field automatically based on the `content` field.
-
 The field (e.g reading_time) referenced in the configuration file must exist. You can add it to the collection-type using the Strapi Admin UI.
 
-> Adding a field to an existing collection-type will require you to change, save or republish the entry/entries in order for this plugin to update the field correctly.
+_Adding the reading time key/field to an existing collection-type will require you to change, save or republish the entry/entries in order for this plugin to update the field correctly._
 
 `skipUndefinedReferences`: If `true` the plugin will ignore any empty references fields. This is useful if you have a collection-type that has a field that is not required but you want to still calculate the reading time for it if it exists.
 
-### Links
+---
 
-- Original plugin author: [Paidly](https://github.com/Paidly/strapi-plugin-reading-time)
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE.md) file for details.
+
+If you find this plugin helpful, please consider:
+
+- ⭐ **Starring** the repository
+- 🐛 **Reporting** bugs and issues
+- 🤝 **Contributing** to the project
+- 💡 **Suggesting** new features
+- 📣 **Sharing** with others who might benefit
