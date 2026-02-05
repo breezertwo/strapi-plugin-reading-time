@@ -1,6 +1,6 @@
 {
   "name": "@breezertwo/strapi-plugin-reading-time",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Calculate the reading time of your content",
   "exports": {
     "./package.json": "./package.json",
