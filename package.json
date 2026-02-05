@@ -27,11 +27,13 @@
     "lodash": "4.17.23"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "10.0.4",
     "@strapi/sdk-plugin": "^5.4.0",
     "@strapi/strapi": "^5.35.0",
     "@strapi/typescript-utils": "^5.35.0",
     "@vitest/coverage-v8": "^4.0.18",
     "prettier": "^3.8.1",
+    "release-it": "^19.2.4",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
   },
@@ -66,5 +68,22 @@
   "bugs": {
     "url": "https://github.com/breezertwo/strapi-plugin-reading-time/issues"
   },
-  "homepage": "https://github.com/breezertwo/strapi-plugin-reading-time"
+  "homepage": "https://github.com/breezertwo/strapi-plugin-reading-time",
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  }
 }
