@@ -24,6 +24,7 @@ const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
   });
 
   strapi.db.lifecycles.subscribe(subscribe);
+  strapi.log.info('Reading time plugin registered');
 };
 
 export default bootstrap;
