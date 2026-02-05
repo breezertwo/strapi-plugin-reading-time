@@ -1,6 +1,5 @@
 import {
   calculateReadingTime,
-  getPlainText,
   getPluginService,
   getStrapiTextContent,
   SERVICE_NAMES,
@@ -19,9 +18,8 @@ const readingTimeService = ({ strapi }: { strapi: Core.Strapi }) => ({
       return;
     }
 
-    const { field, references } = model;
+    const { field, references } = model as { field: string; references: string[] };
 
-    // Process reference fields with enhanced nested data support
     let referenceFieldValues = references
       .filter((r) => typeof data[r] !== 'undefined' && data[r] !== null)
       .map((r) => {
@@ -33,12 +31,14 @@ const readingTimeService = ({ strapi }: { strapi: Core.Strapi }) => ({
 
         if (Array.isArray(content) || (content && content.content)) {
           const extractedText = getStrapiTextContent(content);
+
           if (extractedText) {
             return extractedText;
           }
         }
 
-        return getPlainText(content);
+        strapi.log.warn(`Unable to extract text from field ${r}`);
+        return '';
       })
       .filter((text: string) => text && text.length > 0);
 

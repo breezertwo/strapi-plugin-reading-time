@@ -1,7 +1,7 @@
-import { ForbiddenError } from '@strapi/utils/dist/errors';
 import _ from 'lodash';
 import { PLUGIN_ID } from './pluginId';
 import { Core, UID } from '@strapi/strapi';
+import { ForbiddenError } from '@strapi/utils/dist/errors';
 
 export const getPluginService = (strapi: Core.Strapi, name: string, plugin = PLUGIN_ID) =>
   strapi.plugin(plugin).service(name);

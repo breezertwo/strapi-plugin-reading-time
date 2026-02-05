@@ -1,16 +1,4 @@
-export const getPlainText = (block: any): string => {
-  const text = block.reduce((acc: any, node: any) => {
-    if (node.type === 'text') {
-      return acc + node.text;
-    }
-    return acc + getPlainText(node.children);
-  }, '');
-
-  return text;
-};
-
-// Enhanced function to extract text from nested Strapi content structures
-// Src: https://raw.githubusercontent.com/mintech-dot/strapi-plugin-reading-time
+// Original: https://raw.githubusercontent.com/mintech-dot/strapi-plugin-reading-time
 export const getStrapiTextContent = (contentArray: any) => {
   if (contentArray && !Array.isArray(contentArray) && contentArray.content) {
     contentArray = contentArray.content;
@@ -37,33 +25,34 @@ export const getStrapiTextContent = (contentArray: any) => {
 
       // Handle nested content arrays
       if (item.content && Array.isArray(item.content)) {
-        item.content.forEach((nestedItem) => {
+        item.content.forEach((nestedItem: any) => {
           text += extractTextRecursively(nestedItem) + ' ';
         });
       }
 
       // Handle columns specifically (elements.columns)
       if (item.columns && Array.isArray(item.columns)) {
-        item.columns.forEach((column) => {
+        item.columns.forEach((column: any) => {
           text += extractTextRecursively(column) + ' ';
         });
       }
 
       // Handle column field (singular)
       if (item.column && Array.isArray(item.column)) {
-        item.column.forEach((column) => {
+        item.column.forEach((column: any) => {
           text += extractTextRecursively(column) + ' ';
         });
       }
 
-      // Handle quote text (elements.quote)
+      // Handle text
       if (item.text && typeof item.text === 'string') {
+        console.log('TEXT');
         text += item.text.replace(/<[^>]*>/g, '') + ' ';
       }
 
       // Handle carousel items
       if (item.images && Array.isArray(item.images)) {
-        item.images.forEach((image) => {
+        item.images.forEach((image: any) => {
           if (image.caption) {
             text += image.caption.replace(/<[^>]*>/g, '') + ' ';
           }

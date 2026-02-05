@@ -17,24 +17,28 @@
     "watch": "strapi-plugin watch",
     "watch:link": "strapi-plugin watch:link",
     "verify": "strapi-plugin verify",
-    "test": "run -T tsc -p server/tsconfig.json"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc -p server/tsconfig.json --noEmit"
   },
   "dependencies": {
-    "reading-time": "^1.5.0"
+    "reading-time": "1.5.0",
+    "lodash": "4.17.23"
   },
   "devDependencies": {
-    "@strapi/sdk-plugin": "^5.3.2",
-    "@strapi/strapi": "^5.23.2",
-    "@strapi/typescript-utils": "^5.23.2",
-    "lodash": "^4.17.21",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
+    "@strapi/sdk-plugin": "^5.4.0",
+    "@strapi/strapi": "^5.35.0",
+    "@strapi/typescript-utils": "^5.35.0",
+    "@vitest/coverage-v8": "^4.0.18",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   },
   "peerDependencies": {
-    "@strapi/sdk-plugin": "^5.3.2",
-    "@strapi/strapi": "^5.0.0",
-    "@strapi/utils": "^5.4.2",
-    "lodash": "^4.17.21"
+    "@strapi/sdk-plugin": "^5",
+    "@strapi/strapi": "^5",
+    "@strapi/utils": "^5"
   },
   "strapi": {
     "displayName": "Reading Time",
@@ -43,15 +47,18 @@
     "kind": "plugin"
   },
   "keywords": [
-    "strapi",
     "strapi-plugin",
+    "strapi",
     "plugin",
-    "strapi plugin",
     "reading-time",
-    "reading time"
+    "reading time",
+    "strapi-plugin-reading-time",
+    "time",
+    "calculate",
+    "length"
   ],
   "license": "MIT",
-  "author": "breezertwo <andreas@heynanny.com>",
+  "author": "breezertwo <andreas@heycare.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/breezertwo/strapi-plugin-reading-time.git"
