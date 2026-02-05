@@ -46,7 +46,6 @@ export const getStrapiTextContent = (contentArray: any) => {
 
       // Handle text
       if (item.text && typeof item.text === 'string') {
-        console.log('TEXT');
         text += item.text.replace(/<[^>]*>/g, '') + ' ';
       }
 

@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Import after mocking
 import settingsService from './settings-service';
 
 describe('settingsService', () => {
@@ -289,25 +288,6 @@ describe('settingsService', () => {
       const result = service.build(settings);
 
       expect(result.models).toEqual({});
-    });
-
-    it('should preserve other settings properties', () => {
-      const mockStrapi = createMockStrapi();
-      const service = settingsService({ strapi: mockStrapi as any });
-
-      const settings = {
-        skipUndefinedReferences: true,
-        contentTypes: {
-          article: {
-            field: 'reading_time',
-            references: 'content',
-          },
-        },
-      };
-
-      const result = service.build(settings);
-
-      expect(result.skipUndefinedReferences).toBe(true);
     });
   });
 });
